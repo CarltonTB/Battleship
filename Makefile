@@ -1,5 +1,5 @@
-COMPILER := g++
-COMPILE_ARGS := -Wall
+COMPILER := clang++
+COMPILE_ARGS := -Wall -std=c++11 -stdlib=libc++
 SRC_EXT := cpp
 SRC_DIR := src
 BUILD_DIR := build
@@ -12,4 +12,3 @@ main:
 
 clean:
 	rm -f battleship
-	rm -r battleship.dSYM

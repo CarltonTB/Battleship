@@ -1,6 +1,7 @@
 #include "../include/space.hpp"
 
 Space::Space(){
+  firedUpon=false;
   ship = nullptr;
 }
 
@@ -15,4 +16,8 @@ bool Space::isEmpty(){
   else{
     return false;
   }
+}
+
+bool Space::shipWasHit(){
+  return !this->isEmpty() && firedUpon;
 }

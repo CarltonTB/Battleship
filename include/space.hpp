@@ -3,8 +3,10 @@
 
 class Space{
   public:
-    Ship* ship; //nullptr if there is no ship occupying it
+    bool firedUpon;
+    Ship* ship; // == nullptr if there is no ship occupying the space
     bool isEmpty();
+    bool shipWasHit();
     Space();
     Space(Ship *occupant);
 };
