@@ -4,6 +4,9 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <iostream>
+using std::cout;
+using std::endl;
 using std::vector;
 using std::string;
 
@@ -48,6 +51,9 @@ bool Board::isValidPlacement(Ship *ship, Coordinates startCoordinates, string di
       valid = true;
     }
   }
+  if(!valid){
+    cout << "You can't place a ship there!" << endl;
+  }
   return valid;
 }
 
@@ -64,30 +70,34 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
         board[yPlacement-i][xPlacement].ship = ship;
       }
       wasPlaced = true;
+      ships.push_back(*ship);
     }
     else if(direction == "south"){
       for(int i = 0; i<ship->length; i++){
         board[yPlacement+i][xPlacement].ship = ship;
       }
       wasPlaced = true;
+      ships.push_back(*ship);
     }
     else if(direction == "east"){
       for(int i = 0; i<ship->length; i++){
         board[yPlacement][xPlacement+i].ship = ship;
       }
       wasPlaced = true;
+      ships.push_back(*ship);
     }
     else if(direction == "west"){
       for(int i = 0; i<ship->length; i++){
         board[yPlacement][xPlacement-i].ship = ship;
       }
       wasPlaced = true;
+      ships.push_back(*ship);
     }
   }
   return wasPlaced;
 }
 
-string Board::printState(){
+string Board::printPlayerBoardState(){
   //Print the state of the board
   string boardState;
   boardState += "          ";
@@ -100,11 +110,20 @@ string Board::printState(){
     boardState += std::to_string(j);
     boardState += "  ";
     for(Space space : row){
-      if(space.isEmpty()){
+      if(space.isEmpty() && !space.firedUpon){
+        boardState += ". ";
+      }
+      else if(space.shipWasHit()){
+        boardState += "X ";
+      }
+      else if(!space.isEmpty() && !space.firedUpon){
         boardState += "O ";
       }
+      else if(space.isEmpty() && space.firedUpon){
+        boardState += "* ";
+      }
       else{
-        boardState += "X ";
+        boardState += "INVALID BOARD STATE";
       }
     }
     j--;
@@ -120,4 +139,52 @@ string Board::printState(){
   boardState += " X";
   boardState += "\n";
   return boardState;
+}
+
+string Board::printOpponentBoardState(){
+  //Print the state of the board, but only show spaces where you have fired
+  string boardState;
+  boardState += "          ";
+  boardState += "Y";
+  boardState += "\n\n";
+  int j = yDimension-1;
+  for(vector<Space> row : board){
+    //Add the y axis coordinates on the side of the board
+    boardState += "          ";
+    boardState += std::to_string(j);
+    boardState += "  ";
+    for(Space space : row){
+      if(space.shipWasHit(){
+        boardState += "X ";
+      }
+      else if(space.isEmpty() && space.firedUpon){
+        boardState += "* ";
+      }
+      else{
+        boardState += ". ";
+      }
+    }
+    j--;
+    boardState += "\n";
+  }
+  //Add the x axis coordinates on the bottom of the board
+  boardState += "\n";
+  boardState += "             ";
+  for(int i = 0; i < xDimension; i++){
+    boardState += std::to_string(i);
+    boardState += " ";
+  }
+  boardState += " X";
+  boardState += "\n";
+  return boardState;
+}
+
+bool Board::allShipsSunk(){
+  bool allSunk = true;
+  for(Ship ship : ships){
+    if(ship.hp > 0){
+      allSunk = false;
+    }
+  }
+  return allSunk;
 }

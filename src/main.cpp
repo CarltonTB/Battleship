@@ -14,7 +14,7 @@ int main() {
   //cout << addInts(1,1) << endl;
   //vector<vector<int>> v;
   vector<int> v;
-  Ship myShip(4,3);
+  Ship myShip("hello world", 4,3);
   Ship *myShipPtr = &myShip;
   myShip.takeHit();
   Space mySpace;
@@ -24,12 +24,15 @@ int main() {
   board.placeShip(myShipPtr, coordinates, "south");
   cout << mySpace.isEmpty() << endl;
   cout << myShip.hp << endl;
-  cout << board.printState() << endl;
+  cout << board.printPlayerBoardState() << endl;
 
   cout << board.isValidPlacement(myShipPtr, coordinates, "north") << endl;
   cout << board.isValidPlacement(myShipPtr, coordinates, "south") << endl;
   cout << board.isValidPlacement(myShipPtr, coordinates, "east") << endl;
   cout << board.isValidPlacement(myShipPtr, coordinates, "west") << endl;
+  cout << board.ships[0].name << endl;
+  cout << board.allShipsSunk() << endl;
+
 
 
 
