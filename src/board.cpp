@@ -154,7 +154,7 @@ string Board::printOpponentBoardState(){
     boardState += std::to_string(j);
     boardState += "  ";
     for(Space space : row){
-      if(space.shipWasHit(){
+      if(space.shipWasHit()){
         boardState += "X ";
       }
       else if(space.isEmpty() && space.firedUpon){

@@ -1,5 +1,7 @@
 #include "../include/utils.hpp"
 #include "../include/coordinates.hpp"
+#include "../include/space.hpp"
+#include "../include/ship.hpp"
 #include <vector>
 #include <string>
 using std::vector;
