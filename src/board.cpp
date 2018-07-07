@@ -10,6 +10,23 @@ using std::endl;
 using std::vector;
 using std::string;
 
+Board::Board(){
+  int width = 10;
+  int height =10;
+  vector<vector<Space>> initializedBoard;
+  for(int i = 0; i < height; i++){
+    vector<Space> boardRow;
+    for(int j = 0; j < width; j++){
+      Space space;
+      boardRow.push_back(space);
+    }
+    initializedBoard.push_back(boardRow);
+  }
+  xDimension = width;
+  yDimension = height;
+  board = initializedBoard;
+}
+
 Board::Board(int width, int height){
   vector<vector<Space>> initializedBoard;
   for(int i = 0; i < height; i++){
@@ -137,7 +154,12 @@ string Board::printPlayerBoardState(){
     boardState += " ";
   }
   boardState += " X";
-  boardState += "\n";
+  boardState += "\n\n";
+  boardState += "          ^\n";
+  boardState += "          N\n";
+  boardState += "      < W   E >\n";
+  boardState += "          S\n";
+  boardState += "          v\n";
   return boardState;
 }
 

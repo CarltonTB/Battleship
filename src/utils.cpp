@@ -10,9 +10,6 @@ using std::endl;
 /*
 This file is for misc. utility functions.
 */
-int addInts(int x, int y){
-  return x+y;
-}
 
 vector<string> stringCommaTokenize(string str){
   vector<string> result;

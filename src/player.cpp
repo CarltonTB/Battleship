@@ -3,6 +3,6 @@
 
 
 Player::Player(){
-  Board initBoard = Board(10,10);
-  board = &initBoard;
+  Board* initBoard = new Board(10,10);
+  board = initBoard;
 }

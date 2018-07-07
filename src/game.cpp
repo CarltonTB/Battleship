@@ -62,10 +62,17 @@ void Game::startGame(){
   cout << "" << endl;
   this->printShipArt();
   //TODO: implement the below methods
-  player1.doInitialShipPlacements();
-  player2.doInitialShipPlacements();
-
-
+  cout << "\n" << endl;
+  cout << "Enter 'start' to being playing the game, or enter any other word to quit the game" << endl;
+  string input;
+  cin >> input;
+  if(input == "start"){
+    player1.doInitialShipPlacements();
+    player2.doInitialShipPlacements();
+  }
+  else{
+    return;
+  }
 }
 
 void Game::endGame(){

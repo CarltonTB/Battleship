@@ -15,6 +15,7 @@ class Board{
     int xDimension, yDimension;
     const vector<string> compass_directions = {"north", "south", "east", "west"};
     Board(int width, int height);
+    Board();
     bool isValidPlacement(Ship *ship, Coordinates startCoordinates, string direction);
     bool placeShip(Ship *ship, Coordinates startCoordinates, string direction);
     string printPlayerBoardState();
