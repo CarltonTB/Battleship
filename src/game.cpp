@@ -6,10 +6,12 @@
 #include <fstream>
 #include <string>
 using std::cout;
+using std::cin;
 using std::endl;
 using std::vector;
 using std::string;
 using std::ifstream;
+using std::stoi;
 
 Game::Game(){
   player1 = HumanPlayer();
@@ -28,20 +30,41 @@ void Game::initializeGame(){
   if (myfile.is_open()){
     while (getline(myfile,line) ){
       vector<string> tokenized = stringCommaTokenize(line);
-      //TODO:create a ship based on tokenized line
-
-      cout << line << '\n';
-
+      player1.shipList.push_back(Ship(tokenized[0],stoi(tokenized[1])));
+      player2.shipList.push_back(Ship(tokenized[0],stoi(tokenized[1])));
     }
     myfile.close();
   }
   else{
-    cout << "Unable to open file\n";
+    cout << "Error: unable to open ships.txt file\n";
   }
 }
 
+void Game::printShipArt(){
+  string line;
+  ifstream myfile ("shipArt.txt");
+  if (myfile.is_open()){
+    while (getline(myfile,line) ){
+      cout << line << endl;
+    }
+    myfile.close();
+  }
+  else{
+    cout << "Error: unable to open shipArt.txt file\n";
+  }
+}
+
+
 void Game::startGame(){
   //TODO: write this method
+  cout << "                             ";
+  cout << "Welcome to Battleship!" << endl;
+  cout << "" << endl;
+  this->printShipArt();
+  //TODO: implement the below methods
+  player1.doInitialShipPlacements();
+  player2.doInitialShipPlacements();
+
 
 }
 

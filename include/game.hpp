@@ -1,14 +1,16 @@
-#include "../include/player.hpp"
+#include "../include/computerPlayer.hpp"
+#include "../include/humanPlayer.hpp"
+
 
 
 class Game{
   public:
-    Player player1;
-    Player player2;
+    HumanPlayer player1;
+    ComputerPlayer player2;
     Game();
     bool gameOver();
     void initializeGame();
+    void printShipArt();
     void startGame();
     void endGame();
-
 };

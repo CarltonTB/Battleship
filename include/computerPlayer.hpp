@@ -4,5 +4,5 @@
 class ComputerPlayer : public Player {
   public:
     void takeTurn();
-
+    void doInitialShipPlacements();
 };

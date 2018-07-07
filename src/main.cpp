@@ -35,19 +35,21 @@ int main() {
   cout << board.ships[0].name << endl;
   cout << board.allShipsSunk() << endl;
 
-  Game game = Game();
-  game.initializeGame();
-
   vector<string> tokens = stringCommaTokenize("hello,world");
 
   cout << tokens[0] << endl;
   cout << tokens[1] << endl;
-
 
   // int i;
   // cout << "Please enter an integer value: ";
   // cin >> i;
   // cout << "The value you entered is " << i;
   // cout << " and its double is " << i*2 << ".\n";
+
+  Game game = Game();
+  game.initializeGame();
+  game.startGame();
+
+
   return 0;
 }

@@ -1,5 +1,9 @@
 #include "../include/computerPlayer.hpp"
 
 void ComputerPlayer::takeTurn(){
-  //placeholder
+
+}
+
+void ComputerPlayer::doInitialShipPlacements(){
+
 }

@@ -4,5 +4,5 @@
 class HumanPlayer : public Player {
   public:
     void takeTurn();
-
+    void doInitialShipPlacements();
 };
