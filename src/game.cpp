@@ -1,6 +1,7 @@
 #include "../include/game.hpp"
 #include "../include/computerPlayer.hpp"
 #include "../include/humanPlayer.hpp"
+#include "../include/utils.hpp"
 #include <iostream>
 #include <fstream>
 #include <string>
@@ -25,7 +26,10 @@ void Game::initializeGame(){
   string line;
   ifstream myfile ("ships.txt");
   if (myfile.is_open()){
-    while ( getline (myfile,line) ){
+    while (getline(myfile,line) ){
+      vector<string> tokenized = stringCommaTokenize(line);
+      //TODO:create a ship based on tokenized line
+      
       cout << line << '\n';
 
     }
