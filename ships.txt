@@ -1,0 +1,4 @@
+Destroyer,5
+Frigate,3
+Gunboat,2
+Corvette,4

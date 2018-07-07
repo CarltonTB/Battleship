@@ -7,6 +7,8 @@
 #include "../include/space.hpp"
 #include "../include/board.hpp"
 #include "../include/coordinates.hpp"
+#include "../include/game.hpp"
+
 using namespace std;
 
 int main() {
@@ -14,7 +16,7 @@ int main() {
   //cout << addInts(1,1) << endl;
   //vector<vector<int>> v;
   vector<int> v;
-  Ship myShip("hello world", 4,3);
+  Ship myShip("hello world",4);
   Ship *myShipPtr = &myShip;
   myShip.takeHit();
   Space mySpace;
@@ -33,8 +35,13 @@ int main() {
   cout << board.ships[0].name << endl;
   cout << board.allShipsSunk() << endl;
 
+  Game game = Game();
+  game.initializeGame();
 
+  vector<string> tokens = stringCommaTokenize("hello,world");
 
+  cout << tokens[0] << endl;
+  cout << tokens[1] << endl;
 
 
   // int i;

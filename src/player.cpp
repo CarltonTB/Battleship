@@ -2,6 +2,7 @@
 #include "../include/board.hpp"
 
 
-Player::Player(Board *initBoard){
-  board = initBoard;
+Player::Player(){
+  Board initBoard = Board(10,10);
+  board = &initBoard;
 }

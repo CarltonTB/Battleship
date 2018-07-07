@@ -3,8 +3,9 @@
 
 class Game{
   public:
-    Player* player1;
-    Player* player2;
+    Player player1;
+    Player player2;
+    Game();
     bool gameOver();
     void initializeGame();
     void startGame();

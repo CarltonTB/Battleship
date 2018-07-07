@@ -10,6 +10,6 @@ class Ship{
     void takeHit();
     bool isSunk();
     Ship();
-    Ship(int initialHp, int intitialLength);
-    Ship(string name, int initialHp, int intitialLength);
+    Ship(int intitialLength);
+    Ship(string name, int intitialLength);
 };

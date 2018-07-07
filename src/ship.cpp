@@ -14,14 +14,14 @@ Ship::Ship(){
   name="";
 }
 
-Ship::Ship(int initialHp, int intitialLength){
-  hp = initialHp;
+Ship::Ship(int intitialLength){
+  hp = intitialLength;
   length = intitialLength;
   name="";
 }
 
-Ship::Ship(string shipName, int initialHp, int intitialLength){
-  hp = initialHp;
+Ship::Ship(string shipName, int intitialLength){
+  hp = intitialLength;
   length = intitialLength;
   name=shipName;
 }
