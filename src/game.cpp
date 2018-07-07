@@ -29,7 +29,7 @@ void Game::initializeGame(){
     while (getline(myfile,line) ){
       vector<string> tokenized = stringCommaTokenize(line);
       //TODO:create a ship based on tokenized line
-      
+
       cout << line << '\n';
 
     }
