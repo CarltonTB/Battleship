@@ -56,7 +56,7 @@ void Game::printShipArt(){
 
 
 void Game::startGame(){
-  //TODO: write this method
+  //TODO: write this method (in progress)
   cout << "                             ";
   cout << "Welcome to Battleship!" << endl;
   cout << "" << endl;
@@ -69,6 +69,7 @@ void Game::startGame(){
   if(input == "start"){
     player1.doInitialShipPlacements();
     player2.doInitialShipPlacements();
+    
   }
   else{
     return;
