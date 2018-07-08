@@ -10,5 +10,6 @@ The format is as follows: ship_name, ship_length.
 BUILD and RUN:
 The project is built using a simple makefile. On a linux machine with the clang++ compiler, run the following commands in the same directory as the Makefile:
 
+COMMANDS:
 make
 ./battleship
