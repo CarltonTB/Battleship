@@ -4,6 +4,6 @@
 class HumanPlayer : public Player {
   public:
     HumanPlayer();
-    void takeTurn();
+    void takeTurn(Board* opponentBoard);
     void doInitialShipPlacements();
 };

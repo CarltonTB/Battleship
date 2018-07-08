@@ -5,12 +5,13 @@
 
 class Game{
   public:
-    HumanPlayer player1;
-    ComputerPlayer player2;
+    HumanPlayer* player1;
+    ComputerPlayer* player2;
     Game();
     bool gameOver();
     void initializeGame();
     void printShipArt();
-    void startGame();
+    bool setupGameBoards();
+    void playGame();
     void endGame();
 };

@@ -8,6 +8,6 @@ class Action{
     Board *targetBoard;
     bool shotHit;
     Action();
-    Action(Coordinates coordinates, Board *board, bool hit);
-    //Player performingPlayer;
+    Action(Coordinates coordinates, Board *board);
+    void takeAction();
 };

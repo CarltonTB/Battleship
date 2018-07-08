@@ -16,8 +16,21 @@ HumanPlayer::HumanPlayer(){
   board = initBoard;
 }
 
-void HumanPlayer::takeTurn(){
-
+void HumanPlayer::takeTurn(Board* opponentBoard){
+  string coords;
+  bool validCoords = false;
+  cout << "<Your turn>" << endl;
+  while(!validCoords){
+    cout << "Enter the coordinates you want to fire at in the form: x,y" << endl;
+    cin >> coords;
+    validCoords = validateCoordinatesFromUser(coords);
+  }
+  //Take action with the coordinates provided by the user
+  vector<string> tokenizedCoords = stringCommaTokenize(coords);
+  Coordinates targetCoords(stoi(tokenizedCoords[0]),stoi(tokenizedCoords[1]));
+  Action* action = new Action(targetCoords,opponentBoard);
+  action->takeAction();
+  actionHistory.push_back(action);
 }
 
 void HumanPlayer::doInitialShipPlacements(){

@@ -1,4 +1,7 @@
 #include "../include/ship.hpp"
+#include <iostream>
+using std::cout;
+using std::endl;
 
 void Ship::takeHit(){
   hp--;

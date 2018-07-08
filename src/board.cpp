@@ -12,7 +12,7 @@ using std::string;
 
 Board::Board(){
   int width = 10;
-  int height =10;
+  int height = 10;
   vector<vector<Space>> initializedBoard;
   for(int i = 0; i < height; i++){
     vector<Space> boardRow;
@@ -89,7 +89,7 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
         }
       }
       wasPlaced = true;
-      ships.push_back(*ship);
+      ships.push_back(ship);
     }
     else if(direction == "south"){
       for(int i = 0; i<ship->length; i++){
@@ -101,7 +101,7 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
         }
       }
       wasPlaced = true;
-      ships.push_back(*ship);
+      ships.push_back(ship);
     }
     else if(direction == "east"){
       for(int i = 0; i<ship->length; i++){
@@ -113,7 +113,7 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
         }
       }
       wasPlaced = true;
-      ships.push_back(*ship);
+      ships.push_back(ship);
     }
     else if(direction == "west"){
       for(int i = 0; i<ship->length; i++){
@@ -125,7 +125,7 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
         }
       }
       wasPlaced = true;
-      ships.push_back(*ship);
+      ships.push_back(ship);
     }
   }
   return wasPlaced;
@@ -134,6 +134,7 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
 string Board::printPlayerBoardState(){
   //Print the state of the board
   string boardState;
+  boardState += "Your board:\n\n";
   boardState += "          ";
   boardState += "Y";
   boardState += "\n\n";
@@ -172,17 +173,18 @@ string Board::printPlayerBoardState(){
   }
   boardState += " X";
   boardState += "\n\n";
-  boardState += "          ^\n";
-  boardState += "          N\n";
-  boardState += "      < W   E >\n";
-  boardState += "          S\n";
-  boardState += "          v\n";
+  boardState += "          ^          Board legend:\n";
+  boardState += "          N               . = Unoccupied or unknown\n";
+  boardState += "      < W   E >           O = Occupied by your ship\n";
+  boardState += "          S               X = Ship was hit\n";
+  boardState += "          v               * = Shot missed\n";
   return boardState;
 }
 
 string Board::printOpponentBoardState(){
   //Print the state of the board, but only show spaces where you have fired
   string boardState;
+  boardState += "Opponent's board:\n\n";
   boardState += "          ";
   boardState += "Y";
   boardState += "\n\n";
@@ -220,8 +222,8 @@ string Board::printOpponentBoardState(){
 
 bool Board::allShipsSunk(){
   bool allSunk = true;
-  for(Ship ship : ships){
-    if(ship.hp > 0){
+  for(Ship *ship : ships){
+    if(ship->hp > 0){
       allSunk = false;
     }
   }

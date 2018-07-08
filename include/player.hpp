@@ -10,7 +10,7 @@ using std::string;
 
 class Player{
   public:
-    vector<Action> actionHistory;
+    vector<Action*> actionHistory;
     vector<Ship*> shipList;
     Board *board;
     Player();

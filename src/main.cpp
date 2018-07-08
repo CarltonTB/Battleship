@@ -9,6 +9,7 @@
 #include "../include/coordinates.hpp"
 #include "../include/game.hpp"
 #include "../include/humanPlayer.hpp"
+#include "../include/action.hpp"
 #include <cstdlib>
 
 using namespace std;
@@ -38,12 +39,24 @@ int main() {
   //
   // cout << tokens[0] << endl;
   // cout << tokens[1] << endl;
+  // Game game = Game();
+  // game.initializeGame();
+  // game.player2->doInitialShipPlacements();
+  // int xCoord = rand()%10;
+  // int yCoord = rand()%10;
+  // Coordinates targetCoords(xCoord,yCoord);
+  // Action* action = new Action(targetCoords,game.player2->board);
+  // action->takeAction();
+  // cout << game.player2->board->printPlayerBoardState() << endl;
+
+
+  // Initializing, setting up, and playing the game:
   Game game = Game();
   game.initializeGame();
-  game.player2.doInitialShipPlacements();
-  cout << game.player2.board->printPlayerBoardState() << endl;
-  // game.startGame();
-
-
-  return 0;
+  bool startGame = game.setupGameBoards();
+  if(startGame){
+    game.playGame();
+  } else {
+    return 0;
+  }
 }

@@ -5,6 +5,6 @@ class ComputerPlayer : public Player {
   public:
     bool isSmartOpponent;
     ComputerPlayer();
-    void takeTurn();
+    void takeTurn(Board* opponentBoard);
     void doInitialShipPlacements();
 };

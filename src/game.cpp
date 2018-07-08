@@ -14,12 +14,14 @@ using std::ifstream;
 using std::stoi;
 
 Game::Game(){
-  player1 = HumanPlayer();
-  player2 = ComputerPlayer();
+  // HumanPlayer* p1 = new HumanPlayer();
+  // ComputerPlayer* p2 = new ComputerPlayer();
+  player1=new HumanPlayer();
+  player2=new ComputerPlayer();
 }
 
 bool Game::gameOver(){
-  return (this->player1.board->allShipsSunk()) || (this->player2.board->allShipsSunk());
+  return (this->player1->board->allShipsSunk()) || (this->player2->board->allShipsSunk());
 }
 
 void Game::initializeGame(){
@@ -29,8 +31,8 @@ void Game::initializeGame(){
   if (myfile.is_open()){
     while (getline(myfile,line) ){
       vector<string> tokenized = stringCommaTokenize(line);
-      player1.shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
-      player2.shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
+      player1->shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
+      player2->shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
     }
     myfile.close();
   }
@@ -54,8 +56,7 @@ void Game::printShipArt(){
 }
 
 
-void Game::startGame(){
-  //TODO: write this method (in progress)
+bool Game::setupGameBoards(){
   cout << "                             ";
   cout << "Welcome to Battleship!" << endl;
   cout << "" << endl;
@@ -66,16 +67,35 @@ void Game::startGame(){
   string input;
   cin >> input;
   if(input == "start"){
-    player1.doInitialShipPlacements();
-    player2.doInitialShipPlacements();
-    player2.board->printPlayerBoardState();
+    player1->doInitialShipPlacements();
+    player2->doInitialShipPlacements();
+    return true;
   }
   else{
-    return;
+    return false;
   }
+}
+
+void Game::playGame(){
+  // uncomment the below line when playing for real and not developing/testing
+  // cout << player2.board->printOpponentBoardState() << endl;
+  cout << player2->board->printPlayerBoardState() << endl;
+  cout << player1->board->printPlayerBoardState() << endl;
+  while(!gameOver()){
+    player1->takeTurn(player2->board);
+    player2->takeTurn(player1->board);
+    cout << player2->board->printPlayerBoardState() << endl;
+    cout << player1->board->printPlayerBoardState() << endl;
+    // for(Ship* ship : player2->board->ships){
+    //   cout << "Ship name:" + ship->name + " | HP: " << ship->hp << endl;
+    // }
+  }
+  endGame();
 }
 
 void Game::endGame(){
   //TODO: write this method
+  //free up all allocated memory, end the program
+
 
 }

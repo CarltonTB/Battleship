@@ -11,7 +11,7 @@ using std::string;
 class Board{
   public:
     vector<vector<Space>> board;
-    vector<Ship> ships;
+    vector<Ship*> ships;
     int xDimension, yDimension;
     const vector<string> compass_directions = {"north", "south", "east", "west"};
     Board(int width, int height);

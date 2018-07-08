@@ -1,5 +1,6 @@
 #include "../include/computerPlayer.hpp"
 #include "../include/coordinates.hpp"
+#include "../include/action.hpp"
 #include <cstdlib>
 #include <iostream>
 #include <string>
@@ -18,17 +19,22 @@ ComputerPlayer::ComputerPlayer(){
   isSmartOpponent = false;
 }
 
-void ComputerPlayer::takeTurn(){
-
+void ComputerPlayer::takeTurn(Board* opponentBoard){
+  if(!isSmartOpponent){
+    int xCoord = rand()%10;
+    int yCoord = rand()%10;
+    //action action with the random coordinates
+    Coordinates targetCoords(xCoord,yCoord);
+    Action* action = new Action(targetCoords,opponentBoard);
+    action->takeAction();
+    actionHistory.push_back(action);
+  }
 }
 
 void ComputerPlayer::doInitialShipPlacements(){
   int xCoord, yCoord;
   string direction;
   bool validShipPlacement;
-  for(Ship *ship : shipList){
-    cout << ship->name + " (length " + to_string(ship->length)+")" << endl;
-  }
   for(Ship *ship : shipList){
     validShipPlacement = false;
     while(!validShipPlacement){
@@ -37,7 +43,6 @@ void ComputerPlayer::doInitialShipPlacements(){
       direction = getRandomCompassDirection();
       Coordinates placementCoordinates(xCoord,yCoord);
       validShipPlacement = board->placeShip(ship, placementCoordinates, direction);
-      cout << "placement attempt" << endl;
     }
   }
 }
