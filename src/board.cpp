@@ -68,9 +68,6 @@ bool Board::isValidPlacement(Ship *ship, Coordinates startCoordinates, string di
       valid = true;
     }
   }
-  if(!valid){
-    cout << "You can't place a ship there!" << endl;
-  }
   return valid;
 }
 
@@ -84,28 +81,48 @@ bool Board::placeShip(Ship *ship, Coordinates startCoordinates, string direction
     //place the ship
     if(direction == "north"){
       for(int i = 0; i<ship->length; i++){
-        board[yPlacement-i][xPlacement].ship = ship;
+        //check if there is already a ship there. If so, return false to avoid collision
+        if(!board[yPlacement-i][xPlacement].isEmpty()){
+          return false;
+        } else {
+          board[yPlacement-i][xPlacement].ship = ship;
+        }
       }
       wasPlaced = true;
       ships.push_back(*ship);
     }
     else if(direction == "south"){
       for(int i = 0; i<ship->length; i++){
-        board[yPlacement+i][xPlacement].ship = ship;
+        //check if there is already a ship there. If so, return false to avoid collision
+        if(!board[yPlacement+i][xPlacement].isEmpty()){
+          return false;
+        } else {
+          board[yPlacement+i][xPlacement].ship = ship;
+        }
       }
       wasPlaced = true;
       ships.push_back(*ship);
     }
     else if(direction == "east"){
       for(int i = 0; i<ship->length; i++){
-        board[yPlacement][xPlacement+i].ship = ship;
+        //check if there is already a ship there. If so, return false to avoid collision
+        if(!board[yPlacement][xPlacement+i].isEmpty()){
+          return false;
+        } else {
+          board[yPlacement][xPlacement+i].ship = ship;
+        }
       }
       wasPlaced = true;
       ships.push_back(*ship);
     }
     else if(direction == "west"){
       for(int i = 0; i<ship->length; i++){
-        board[yPlacement][xPlacement-i].ship = ship;
+        //check if there is already a ship there. If so, return false to avoid collision
+        if(!board[yPlacement][xPlacement-i].isEmpty()){
+          return false;
+        } else {
+          board[yPlacement][xPlacement-i].ship = ship;
+        }
       }
       wasPlaced = true;
       ships.push_back(*ship);
