@@ -33,23 +33,29 @@ void HumanPlayer::doInitialShipPlacements(){
     while(!validShipPlacement){
       string coords;
       string direction;
+      bool validCoords = false;
+      bool validDirection = false;
       cout << "<Placing " + ship.name + " (length " + to_string(ship.length)+")>" << endl;
-      cout << "Enter coordinates in the form: x,y for the desired position of the ship" << endl;
-      cin >> coords;
-      //TODO: validate coordinates in a loop
-      cout << "Enter a heading direction for the ship (north, south, east, or west)" << endl;
-      cin >> direction;
-      //TODO: validate direction in a loop
+      while(!validCoords){
+        cout << "Enter coordinates in the form: x,y for the desired position of the ship" << endl;
+        cin >> coords;
+        validCoords = validateCoordinatesFromUser(coords);
+      }
+      while(!validDirection){
+        cout << "Enter a heading direction for the ship in all lowercase (north, south, east, or west)" << endl;
+        cin >> direction;
+        validDirection = validateDirectionFromUser(direction);
+      }
       //if everything is valid, place the ship
-      vector<string> tokenizeCoords = stringCommaTokenize(coords);
-      Coordinates placementCoordinates(stoi(tokenizeCoords[0]),stoi(tokenizeCoords[1]));
+      vector<string> tokenizedCoords = stringCommaTokenize(coords);
+      Coordinates placementCoordinates(stoi(tokenizedCoords[0]),stoi(tokenizedCoords[1]));
       validShipPlacement = board->placeShip(&ship, placementCoordinates, direction);
       if(validShipPlacement){
         cout << "" << endl;
         cout << board->printPlayerBoardState() << endl;
         cout << "" << endl;
       } else {
-        cout << "Placement location was invalid, please choose a different location" << endl;
+        cout << "Your chosen placement location was invalid. Please choose a different location" << endl;
       }
     }
   }

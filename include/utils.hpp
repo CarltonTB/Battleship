@@ -7,3 +7,5 @@ using std::vector;
 
 //This file is for misc. utility functions.
 vector<string> stringCommaTokenize(string str);
+bool validateCoordinatesFromUser(string coords);
+bool validateDirectionFromUser(string direction);

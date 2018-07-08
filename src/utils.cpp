@@ -7,20 +7,38 @@ using std::vector;
 using std::stringstream;
 using std::cout;
 using std::endl;
+using std::stoi;
 /*
 This file is for misc. utility functions.
 */
 
 vector<string> stringCommaTokenize(string str){
   vector<string> result;
-
   stringstream ss(str);
+
   while(ss.good()){
     string substr;
     getline(ss,substr,',' );
     result.push_back(substr);
   }
-
   return result;
+}
 
+bool validateCoordinatesFromUser (string coords){
+  bool valid = true;
+  vector<string> tokenizedCoords = stringCommaTokenize(coords);
+  if(coords.length() != 3 || tokenizedCoords.size() != 2){
+    return false;
+  }
+  if(stoi(tokenizedCoords[0]) < 0 || stoi(tokenizedCoords[0]) > 9){
+    valid = false;
+  }
+  if(stoi(tokenizedCoords[1]) < 0 || stoi(tokenizedCoords[1]) > 9){
+    valid = false;
+  }
+  return valid;
+}
+
+bool validateDirectionFromUser(string direction){
+  return (direction == "north") || (direction == "south") || (direction == "east") || (direction == "west");
 }
