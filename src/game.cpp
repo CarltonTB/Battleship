@@ -79,12 +79,12 @@ bool Game::setupGameBoards(){
 void Game::playGame(){
   // uncomment the below line when playing for real and not developing/testing
   // cout << player2.board->printOpponentBoardState() << endl;
-  cout << player2->board->printPlayerBoardState() << endl;
+  cout << player2->board->printOpponentBoardState() << endl;
   cout << player1->board->printPlayerBoardState() << endl;
   while(!gameOver()){
     player1->takeTurn(player2->board);
     player2->takeTurn(player1->board);
-    cout << player2->board->printPlayerBoardState() << endl;
+    cout << player2->board->printOpponentBoardState() << endl;
     cout << player1->board->printPlayerBoardState() << endl;
   }
   cout << "GAME OVER" << endl;
@@ -101,7 +101,29 @@ void Game::playGame(){
 }
 
 void Game::endGame(){
-  //TODO: write this method
-  //free up all allocated memory, end the program
+  //Free up all allocated memory
+  for(Ship* ship : player1->shipList){
+    delete ship;
+  }
+  player1->shipList.clear();
 
+  for(Ship* ship : player2->shipList){
+    delete ship;
+  }
+  player2->shipList.clear();
+
+  for(Action* action : player1->actionHistory){
+    delete action;
+  }
+  player1->actionHistory.clear();
+
+  for(Action* action : player2->actionHistory){
+    delete action;
+  }
+  player2->actionHistory.clear();
+
+  player1->board->ships.clear();
+  player2->board->ships.clear();
+  player1->board->board.clear();
+  player2->board->board.clear();
 }
