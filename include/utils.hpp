@@ -9,3 +9,4 @@ using std::vector;
 vector<string> stringCommaTokenize(string str);
 bool validateCoordinatesFromUser(string coords);
 bool validateDirectionFromUser(string direction);
+string getRandomCompassDirection();

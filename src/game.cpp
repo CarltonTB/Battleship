@@ -16,7 +16,6 @@ using std::stoi;
 Game::Game(){
   player1 = HumanPlayer();
   player2 = ComputerPlayer();
-
 }
 
 bool Game::gameOver(){
@@ -63,13 +62,12 @@ void Game::startGame(){
   this->printShipArt();
   //TODO: implement the below methods
   cout << "\n" << endl;
-  cout << "Enter 'start' to being playing the game, or enter any other word to quit the game" << endl;
+  cout << "Enter 'start' to being playing the game, or enter any other input to quit the game" << endl;
   string input;
   cin >> input;
   if(input == "start"){
     player1.doInitialShipPlacements();
     player2.doInitialShipPlacements();
-    
   }
   else{
     return;

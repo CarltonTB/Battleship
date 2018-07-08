@@ -9,6 +9,7 @@
 #include "../include/coordinates.hpp"
 #include "../include/game.hpp"
 #include "../include/humanPlayer.hpp"
+#include <cstdlib>
 
 using namespace std;
 
@@ -37,10 +38,12 @@ int main() {
   //
   // cout << tokens[0] << endl;
   // cout << tokens[1] << endl;
-
-  Game game = Game();
-  game.initializeGame();
-  game.startGame();
+  for(int i = 0; i<10; i++){
+    cout << getRandomCompassDirection() << endl;
+  }
+  // Game game = Game();
+  // game.initializeGame();
+  // game.startGame();
 
 
   return 0;

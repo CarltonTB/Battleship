@@ -8,6 +8,8 @@ using std::stringstream;
 using std::cout;
 using std::endl;
 using std::stoi;
+#include <cstdlib>
+
 /*
 This file is for misc. utility functions.
 */
@@ -41,4 +43,22 @@ bool validateCoordinatesFromUser (string coords){
 
 bool validateDirectionFromUser(string direction){
   return (direction == "north") || (direction == "south") || (direction == "east") || (direction == "west");
+}
+
+string getRandomCompassDirection(){
+  int random = (rand()%10)/3;
+  string dir;
+  if(random == 0){
+    dir = "north";
+  }
+  else if(random == 1){
+    dir = "south";
+  }
+  else if(random == 2){
+    dir = "east";
+  }
+  else{
+    dir = "west";
+  }
+  return dir;
 }
