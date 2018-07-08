@@ -29,8 +29,8 @@ void Game::initializeGame(){
   if (myfile.is_open()){
     while (getline(myfile,line) ){
       vector<string> tokenized = stringCommaTokenize(line);
-      player1.shipList.push_back(Ship(tokenized[0],stoi(tokenized[1])));
-      player2.shipList.push_back(Ship(tokenized[0],stoi(tokenized[1])));
+      player1.shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
+      player2.shipList.push_back(new Ship(tokenized[0],stoi(tokenized[1])));
     }
     myfile.close();
   }
@@ -68,6 +68,7 @@ void Game::startGame(){
   if(input == "start"){
     player1.doInitialShipPlacements();
     player2.doInitialShipPlacements();
+    player2.board->printPlayerBoardState();
   }
   else{
     return;

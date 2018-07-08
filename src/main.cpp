@@ -38,11 +38,10 @@ int main() {
   //
   // cout << tokens[0] << endl;
   // cout << tokens[1] << endl;
-  for(int i = 0; i<10; i++){
-    cout << getRandomCompassDirection() << endl;
-  }
-  // Game game = Game();
-  // game.initializeGame();
+  Game game = Game();
+  game.initializeGame();
+  game.player2.doInitialShipPlacements();
+  cout << game.player2.board->printPlayerBoardState() << endl;
   // game.startGame();
 
 

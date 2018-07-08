@@ -23,19 +23,19 @@ void HumanPlayer::takeTurn(){
 void HumanPlayer::doInitialShipPlacements(){
   cout << "" << endl;
   cout << "These are your ships:" << endl;
-  for(Ship ship : shipList){
-    cout << ship.name + " (length " + to_string(ship.length)+")" << endl;
+  for(Ship *ship : shipList){
+    cout << ship->name + " (length " + to_string(ship->length)+")" << endl;
   }
   cout << "" << endl;
   cout << board->printPlayerBoardState() << endl;
-  for(Ship ship : shipList){
+  for(Ship *ship : shipList){
     bool validShipPlacement = false;
     while(!validShipPlacement){
       string coords;
       string direction;
       bool validCoords = false;
       bool validDirection = false;
-      cout << "<Placing " + ship.name + " (length " + to_string(ship.length)+")>" << endl;
+      cout << "<Placing " + ship->name + " (length " + to_string(ship->length)+")>" << endl;
       while(!validCoords){
         cout << "Enter coordinates in the form: x,y for the desired position of the ship" << endl;
         cin >> coords;
@@ -49,7 +49,7 @@ void HumanPlayer::doInitialShipPlacements(){
       //if everything is valid, place the ship
       vector<string> tokenizedCoords = stringCommaTokenize(coords);
       Coordinates placementCoordinates(stoi(tokenizedCoords[0]),stoi(tokenizedCoords[1]));
-      validShipPlacement = board->placeShip(&ship, placementCoordinates, direction);
+      validShipPlacement = board->placeShip(ship, placementCoordinates, direction);
       if(validShipPlacement){
         cout << "" << endl;
         cout << board->printPlayerBoardState() << endl;

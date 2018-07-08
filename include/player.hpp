@@ -11,7 +11,7 @@ using std::string;
 class Player{
   public:
     vector<Action> actionHistory;
-    vector<Ship> shipList;
+    vector<Ship*> shipList;
     Board *board;
     Player();
 };
