@@ -86,16 +86,22 @@ void Game::playGame(){
     player2->takeTurn(player1->board);
     cout << player2->board->printPlayerBoardState() << endl;
     cout << player1->board->printPlayerBoardState() << endl;
-    // for(Ship* ship : player2->board->ships){
-    //   cout << "Ship name:" + ship->name + " | HP: " << ship->hp << endl;
-    // }
   }
+  cout << "GAME OVER" << endl;
+  if(player2->board->allShipsSunk()){
+    cout << "You were victorious!" << endl;
+  }
+  else{
+    cout << "You were defeated" << endl;
+  }
+  cout << "\n" << endl;
+  cout << "*** Developed by: Carlton Brady ***" << endl;
+  cout << "\n" << endl;
   endGame();
 }
 
 void Game::endGame(){
   //TODO: write this method
   //free up all allocated memory, end the program
-
 
 }
