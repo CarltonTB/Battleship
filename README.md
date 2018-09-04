@@ -1,7 +1,7 @@
 AUTHOR: Carlton Brady
 
 DESCRIPTION:
-This project lets you play battleship on the command line against a smart opponent or a dumb opponent. The dumb opponent takes random guesses and the smart opponent makes guesses that are smart given the state of the board. For example, the smart opponent will take shots 1 space away from previous shots that were a hit.
+This project lets you play battleship on the command line against a computer opponent.
 
 CONFIGURATION:
 The list of ships available in the game can be configured in the ships.txt file.
